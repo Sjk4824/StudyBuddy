@@ -1,0 +1,28 @@
+.home{
+    
+    /* background-image: url("https://i.redd.it/0n1vny53phl11.jpg");
+    background-repeat: no-repeat;
+    height: 700px;
+    background-size: cover;
+    opacity: 0.36;  */
+    position: relative;
+
+}
+
+.home::before{
+    content: "";
+    background-image: url("https://i.redd.it/0n1vny53phl11.jpg");
+    /* background-repeat: no-repeat; */
+    height: 700px;
+    background-size: cover;
+    opacity: 0.36; 
+    position: absolute;
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0;
+}
+
+.sidebar__home{
+    padding-top: 200px;
+}
