@@ -8,6 +8,8 @@
     position: relative;
     /* background-color: white; */
     z-index: 99;
+    min-width: 80px;
+    min-height: 470px;
     width: 7%;
     height: 470px;
     display: flex;
@@ -30,13 +32,14 @@
     position: relative;
     right: 5px;
     z-index: 100;
-    height: 60px; 
-    width: 60px;
+    width: 3.75rem;
+    height: 3.75rem;
     margin: 20px;
     border: 1px solid #354477;
     border-radius: 18px;
     background-color: transparent;
 }
 .sidebar__button:hover{
-    box-shadow: 2px 2px 3px 3px #354477;
+    background: #354477;
+    /* box-shadow: 2px 2px 3px 3px #354477; */
 }

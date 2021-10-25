@@ -1,0 +1,39 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login__logo{
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-size: 3rem;
+    margin-top: 100px;
+}
+.login__tagline{
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-size: 2.5rem;
+    margin-top: 15px;
+}
+.login__button{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-top: 50px;
+    height: 50px;
+    width: 250px;
+    border-radius: 60px;
+    border: 1px solid #354477;
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+.login__button:hover{
+    box-shadow: 0 0 10px #354477;
+}
+.login__img{
+    height: 450px;
+    width: 450px;
+}
