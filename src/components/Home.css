@@ -22,7 +22,28 @@
     right:0; 
     bottom:0;
 }
-
+.home__greetings{
+    position: absolute;
+    margin-left: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 65px;
+}
+.home__greetings > p{
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    margin-top: 15px;
+}
 .sidebar__home{
     padding-top: 200px;
+}
+.home__greetings__time{
+    font-size: 3.5rem;
+}
+.home__greetings__date{
+    font-size: 2rem;
+}
+.home__greetings__greet{
+    font-size: 3rem;
 }

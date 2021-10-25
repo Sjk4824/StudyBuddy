@@ -1,5 +1,8 @@
 .sidebar{
-    padding-top: 120px;
+    position: relative;
+    top: 120px; 
+    display: inline;
+    /* padding-top: 120px; */
 }
 .sidebar__container{
     position: relative;
@@ -30,7 +33,10 @@
     height: 60px; 
     width: 60px;
     margin: 20px;
-    border: 1px solid #000000;
+    border: 1px solid #354477;
     border-radius: 18px;
     background-color: transparent;
+}
+.sidebar__button:hover{
+    box-shadow: 2px 2px 3px 3px #354477;
 }
