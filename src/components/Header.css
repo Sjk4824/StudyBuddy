@@ -1,0 +1,31 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 3.5%;
+    padding-left: 3.5%;
+    padding-top: 1.25%;
+    padding-bottom: 1.25%;
+    background-color: #F5E9EF;
+}
+.header__logo{
+   font-family: 'Montserrat', sans-serif;
+   font-size: 1.75rem;
+   color: #354477;
+}
+.header__button{
+    height: 45px;
+    width: 250px;
+    border-radius: 30px;
+    border: none;
+    background: #EFA9BB;
+    font-size: 1rem;
+    font-family:'Montserrat', sans-serif;
+    color: #354477;
+    font-weight: 500;
+}
+
+.header__button:hover{
+    background: #D15C7A;
+    color: white;
+}
