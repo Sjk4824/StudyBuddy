@@ -13,19 +13,20 @@ function Sidebar(props) {
     const [color4, setcolor4] = useState(true)
 
     const handleClickMusic=()=>{
-        //on clicking we need to remove sidebar and slide in respective component
         props.removeSidebar(false); 
+        props.setMusic(true);
     }
+
     const handleClickToDo=()=>{
-        //on clicking we need to remove sidebar and slide in respective component
-        props.removeSidebar(false); 
+        props.removeSidebar(false);
+        props.setToDo(true);
     }
+
     const handleClickLinks=()=>{
-        //on clicking we need to remove sidebar and slide in respective component
         props.removeSidebar(false); 
     }
+
     const handleClickCalculator=()=>{
-        //on clicking we need to remove sidebar and slide in respective component
         props.removeSidebar(false); 
     }
 

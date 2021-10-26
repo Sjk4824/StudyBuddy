@@ -3,6 +3,8 @@ import "./Home.css";
 import "./Sidebar"; 
 import Sidebar from './Sidebar';
 import MusicComponent from "./MusicComponent";
+import Todo from "./Todo"; 
+
 var _ = require('lodash');
 
 function Home() {
@@ -32,6 +34,10 @@ function Home() {
 
     //we need a state to handle display for side bar. 
     const [display, setDisplay] = useState(true); 
+    const [music, setMusic] = useState(false); 
+    const [toDo, setToDo] = useState(false); 
+    const [link, setLink] = useState(false); 
+    const [calculator, setCalculator] = useState(false); 
 
     return (
         <div className = "home">
@@ -40,7 +46,10 @@ function Home() {
                 <p className ="home__greetings__date">{day_of_week[time.getDay()]}, {time.getDate()} {month_names[time.getMonth()]}</p>
                 <p className = "home__greetings__greet">{getGreeting()}, <strong>{_.startCase(_.toLower(JSON.parse(localStorage.getItem("user")).name))}!</strong></p>
             </div>
-            {display? <Sidebar removeSidebar={setDisplay}/> : <MusicComponent />}
+            {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo}/>: ""}
+            {music &&  <MusicComponent removeSidebar={setDisplay} setMusic={setMusic}/>}
+            {toDo && <Todo removeSidebar={setDisplay} setToDo={setToDo}/>}
+
         </div>
     )
 }
