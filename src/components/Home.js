@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "./Home.css"; 
 import "./Sidebar"; 
 import Sidebar from './Sidebar';
+import MusicComponent from "./MusicComponent";
 var _ = require('lodash');
 
 function Home() {
@@ -29,6 +30,8 @@ function Home() {
         }
     }
 
+    //we need a state to handle display for side bar. 
+    const [display, setDisplay] = useState(true); 
 
     return (
         <div className = "home">
@@ -37,7 +40,7 @@ function Home() {
                 <p className ="home__greetings__date">{day_of_week[time.getDay()]}, {time.getDate()} {month_names[time.getMonth()]}</p>
                 <p className = "home__greetings__greet">{getGreeting()}, <strong>{_.startCase(_.toLower(JSON.parse(localStorage.getItem("user")).name))}!</strong></p>
             </div>
-            <Sidebar />
+            {display? <Sidebar removeSidebar={setDisplay}/> : <MusicComponent />}
         </div>
     )
 }
