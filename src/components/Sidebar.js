@@ -23,7 +23,8 @@ function Sidebar(props) {
     }
 
     const handleClickLinks=()=>{
-        props.removeSidebar(false); 
+        props.removeSidebar(false);
+        props.setLink(true);
     }
 
     const handleClickCalculator=()=>{

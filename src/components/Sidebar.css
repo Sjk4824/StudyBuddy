@@ -10,7 +10,8 @@
     z-index: 99;
     min-width: 80px;
     min-height: 470px;
-    width: 7%;
+    width: 110px;
+    /* width: 7%; */
     height: 470px;
     display: flex;
     flex-direction: column;

@@ -4,6 +4,7 @@ import "./Sidebar";
 import Sidebar from './Sidebar';
 import MusicComponent from "./MusicComponent";
 import Todo from "./Todo"; 
+import QuickLinks from './QuickLinks';
 
 var _ = require('lodash');
 
@@ -46,10 +47,11 @@ function Home() {
                 <p className ="home__greetings__date">{day_of_week[time.getDay()]}, {time.getDate()} {month_names[time.getMonth()]}</p>
                 <p className = "home__greetings__greet">{getGreeting()}, <strong>{_.startCase(_.toLower(JSON.parse(localStorage.getItem("user")).name))}!</strong></p>
             </div>
-            {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo}/>: ""}
+            {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo} setLink={setLink} />: ""}
+            
             {music &&  <MusicComponent removeSidebar={setDisplay} setMusic={setMusic}/>}
             {toDo && <Todo removeSidebar={setDisplay} setToDo={setToDo}/>}
-
+            {link && <QuickLinks removeSidebar={setDisplay} setLink={setLink}/> }
         </div>
     )
 }
