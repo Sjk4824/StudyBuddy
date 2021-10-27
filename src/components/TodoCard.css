@@ -1,0 +1,30 @@
+.todoCard{
+    margin-top: 10px;
+    position: relative;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    width: 270px;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+.todoCard__header{
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-size: 13px;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.todoCard__footer{
+    display: flex;
+    justify-content: flex-end;
+}
+.todoCard__task{
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    position: relative;
+}

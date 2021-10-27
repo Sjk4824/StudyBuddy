@@ -58,3 +58,34 @@
     font-family: 'Montserrat', sans-serif;
     color: #354477;
 }
+.todo__add{
+    border: 1px solid #354477;
+    background-color: transparent;
+    position: relative;
+    bottom: 80px;
+    width: 30px;
+    border-radius: 100%;
+    height: 30px;
+    font-size: 15px;
+    margin-left: 105%;
+}
+.todo__add:hover{
+    background-color: #354477;
+    color: #fff;
+}
+.todo__items__all{
+    max-height: 350px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar{
+    width: 3px;
+    height: 20px;
+}
+::-webkit-scrollbar-track{
+   background: rgb(156, 156, 156); 
+}
+::-webkit-scrollbar-thumb{
+    background:  rgb(180, 18, 167);
+    border-radius: 100vw;
+}
