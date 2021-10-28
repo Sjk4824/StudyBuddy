@@ -30,6 +30,7 @@ function Todo(props) {
         setTask(""); 
         setDeadline(""); 
     }
+    
     const makeNewList = (toadd) => {
         const newItem = [...todos, toadd]
         setTodos(newItem); 

@@ -8,7 +8,7 @@ function Header() {
             <Link style={{textDecoration : "none"}} to ="/dashboard">
                 <h2 className = "header__logo">StudyBuddy</h2>
             </Link>
-            <button className = "header__button">Start Pomodoro session</button>
+            <button className = "header__btn">Start Pomodoro Session</button>
         </div>
     )
 }

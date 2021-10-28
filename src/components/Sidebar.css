@@ -6,19 +6,16 @@
 }
 .sidebar__container{
     position: relative;
-    /* background-color: white; */
     z-index: 99;
     min-width: 80px;
     min-height: 470px;
     width: 110px;
-    /* width: 7%; */
     height: 470px;
     display: flex;
     flex-direction: column;
-    border-radius: 0px 100px 100px 0px;
     justify-content: center;
 }
-.sidebar__container::before{
+.sidebar__container::after{
     content: "";
     background-color: white;
     opacity: 0.70;
@@ -44,3 +41,4 @@
     background: #354477;
     /* box-shadow: 2px 2px 3px 3px #354477; */
 }
+

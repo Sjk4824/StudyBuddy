@@ -13,7 +13,8 @@
    font-size: 1.75rem;
    color: #354477;
 }
-.header__button{
+
+.header__btn{
     height: 45px;
     width: 250px;
     border-radius: 30px;
@@ -23,8 +24,4 @@
     font-family:'Montserrat', sans-serif;
     color: #354477;
     font-weight: 600;
-}
-.header__button:hover{
-    background: #D15C7A;
-    color: white;
 }
