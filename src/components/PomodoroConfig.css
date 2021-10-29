@@ -1,0 +1,85 @@
+.pomoConfig{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.pomoContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 480px;
+    width: 800px;
+    background-color: white;
+    opacity: 0.90;
+    border-radius: 40px;
+}
+
+.pomoConfig::before{
+    content: "";
+    background-image: url("https://i.redd.it/0n1vny53phl11.jpg");
+    height: 700px;
+    background-size: cover;
+    opacity: 0.36; 
+    position: absolute;
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0;
+}
+
+.pomoContainer > h1{
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-size: 2.5rem;
+    margin-top: 50px;
+    margin-bottom: 55px;    
+}
+.time{
+    width: 100%;
+    padding-left: 100px;
+    padding-right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.time > p{
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-size: 1.5rem;
+}
+
+.input1{
+    margin-right: 10px;
+}
+.input2{
+    margin-left: 10px;
+}
+.pomoInput{
+    height: 45px; 
+    border-radius: 20px;
+    padding-left: 20px;
+    border: 1px solid rgb(160, 160, 160);
+}
+.pomo__start{
+    margin-top: 40px;
+    height: 70px;
+    width: 230px;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    border: 1px solid #354477;
+    font-size: 0.95rem;
+    background: transparent;
+    font-weight: bold;
+}
+.pomo__start:hover{
+    background: #354477;
+    color: #fff;
+}

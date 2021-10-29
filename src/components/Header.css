@@ -25,3 +25,7 @@
     color: #354477;
     font-weight: 600;
 }
+.header__btn:hover{
+    background-color: #f87596;
+    color: #fff;
+}

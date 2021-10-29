@@ -16,7 +16,7 @@
     bottom:0;
 }
 .home__greetings{
-    width: 100%;
+    width: 800px;
     position: absolute;
     display: flex;
     flex-direction: column;

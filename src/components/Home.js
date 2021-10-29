@@ -38,7 +38,6 @@ function Home() {
     const [music, setMusic] = useState(false); 
     const [toDo, setToDo] = useState(false); 
     const [link, setLink] = useState(false); 
-    const [calculator, setCalculator] = useState(false); 
 
     return (
         <div className = "home">

@@ -21,28 +21,7 @@ function QuickLinks(props) {
         props.removeSidebar(true); 
         props.setLink(false); 
     }
-
-    // async function handleSubmit(event){
-    //     event.preventDefault(); 
-    //     if (!event) return;
-
-    //     const response = await axios.get("http://localhost:4000/app/favicon", 
-    //         {
-    //             params: {
-    //                 //the parameter for querying. 
-    //                 url : url
-    //             }
-    //         }
-    //     ); 
-
-    //     const newLink = {
-    //         linkName : rName, 
-    //         url : url
-    //     }
-    //     makeNewLink(newLink); 
-    //     setUrl(""); 
-    //     setRName(""); 
-    // }
+    
     const handleSubmit = (event) => {
         event.preventDefault(); 
         if (!event) return;
