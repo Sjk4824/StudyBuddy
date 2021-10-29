@@ -22,25 +22,49 @@ function QuickLinks(props) {
         props.setLink(false); 
     }
 
-    const handleSubmit = (event) =>{
+    // async function handleSubmit(event){
+    //     event.preventDefault(); 
+    //     if (!event) return;
+
+    //     const response = await axios.get("http://localhost:4000/app/favicon", 
+    //         {
+    //             params: {
+    //                 //the parameter for querying. 
+    //                 url : url
+    //             }
+    //         }
+    //     ); 
+
+    //     const newLink = {
+    //         linkName : rName, 
+    //         url : url
+    //     }
+    //     makeNewLink(newLink); 
+    //     setUrl(""); 
+    //     setRName(""); 
+    // }
+    const handleSubmit = (event) => {
         event.preventDefault(); 
         if (!event) return;
-        // //make a get request to the website using axios. 
-        // axios({
-        //     method: "GET", 
-        //     url: `https://besticon-demo.herokuapp.com/allicons.json?url=${url}`, 
-        //     responseType : "json"
-        // }).then((response) => {
-        //     console.log(response); 
-        // })
 
-        const newLink = {
-            linkName : rName, 
-            url : url
-        }
-        makeNewLink(newLink); 
-        setUrl(""); 
-        setRName(""); 
+        axios.get("http://localhost:4000/app/favicon", 
+            {
+                params: {
+                    //the parameter for querying. 
+                    url : url
+                }
+            }
+        ).then((resp) => {
+            const newLink = {
+                linkName : rName, 
+                url : url, 
+                imgUrl : resp.data.icons[0].url
+            }
+            makeNewLink(newLink); 
+            setUrl(""); 
+            setRName(""); 
+            setImg(""); 
+        })
     }
 
     const makeNewLink = (toadd) => {
@@ -71,7 +95,7 @@ function QuickLinks(props) {
                 </div>
                 <div className = "quicklink__all">
                     {links.map((link, index) => (
-                        <QuickCard key={index} index={index} rName = {link.linkName} url={link.url} removeLink={removeLink}/>
+                        <QuickCard key={index} index={index} rName = {link.linkName} url={link.url} imgUrl = {link.imgUrl} removeLink={removeLink}/>
                     ))}
                 </div>
             </div>

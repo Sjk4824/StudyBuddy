@@ -40,8 +40,6 @@ function Home() {
     const [link, setLink] = useState(false); 
     const [calculator, setCalculator] = useState(false); 
 
-    const [isMobile, setIsMobile] = useState(false); 
-
     return (
         <div className = "home">
             <div className = "home__greetings">
