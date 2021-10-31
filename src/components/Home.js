@@ -50,9 +50,7 @@ function Home(props) {
                 <p className = "home__greetings__greet">{getGreeting()}, <strong>{_.startCase(_.toLower(JSON.parse(localStorage.getItem("user")).name))}!</strong></p>
             </div> */}
             <PomodoroTimer openSettings = {props.openSettings}/>
-
-
-
+            
             {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo} setLink={setLink} />: ""}
             
             {music &&  <MusicComponent removeSidebar={setDisplay} setMusic={setMusic}/>}
