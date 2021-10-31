@@ -1,7 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import "./PomodoroConfig.css"; 
+import SettingContext from './SettingContext';
 
-function PomodoroConfig() {
+function PomodoroConfig(props) {
+
+    const settingsInfo = useContext(SettingContext); 
+
+    const handleStart = () => {
+        props.openPopUp();
+    }
+
     return (
         <div className = "pomoConfig">
             <div className="pomoContainer">
@@ -9,28 +17,20 @@ function PomodoroConfig() {
                 <div className = "time work__time">
                     <p>Work Session</p>
                     <form>
-                        <input className="input1 pomoInput" type="text" placeholder="hours"></input>
+                        <input className="input1 pomoInput" type="number" value = {settingsInfo.workHours} placeholder="hours" onChange={(newValue) => settingsInfo.setWorkHours(newValue.target.value)}></input>
                         <strong>:</strong>
-                        <input className ="pomoInput input2" type="text" placeholder="minutes"></input>
+                        <input className ="pomoInput input2" type="number" value = {settingsInfo.workMinutes} placeholder="minutes" onChange={(newValue) => settingsInfo.setWorkMinutes(newValue.target.value)}></input>
                     </form>
                 </div>
                 <div className = "time shortBreak__time">
-                    <p>Short Break</p>
+                    <p>Break Session</p>
                     <form>
-                        <input className="input1 pomoInput" type="text" placeholder="hours"></input>
+                        <input className="input1 pomoInput" type="number" value = {settingsInfo.breakHours} placeholder="hours" onChange={(newValue) => settingsInfo.setBreakHours(newValue.target.value)}></input>
                         <strong>:</strong>
-                        <input className ="pomoInput input2" type="text" placeholder="minutes"></input>
+                        <input className ="pomoInput input2" type="number" value = {settingsInfo.breakMinutes} placeholder="minutes" onChange={(newValue) => settingsInfo.setBreakMinutes(newValue.target.value)}></input>
                     </form>
                 </div>
-                <div className = "time longBreak__time">
-                    <p>Long Break</p>
-                    <form>
-                        <input className="input1 pomoInput" type="text" placeholder="hours"></input>
-                        <strong>:</strong>
-                        <input className ="pomoInput input2" type="text" placeholder="minutes"></input>
-                    </form>
-                </div>
-                <button className="pomo__start">Start Pomodoro Session</button>
+                <button onClick={handleStart} className="pomo__start">Start Pomodoro Session</button>
             </div>
         </div>
     )

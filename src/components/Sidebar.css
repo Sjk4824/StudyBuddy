@@ -39,6 +39,7 @@
 }
 .sidebar__button:hover{
     background: #354477;
+    cursor: pointer;
     /* box-shadow: 2px 2px 3px 3px #354477; */
 }
 

@@ -1,0 +1,35 @@
+.pm__timer{
+    position: relative;
+}
+.pmTimer__container{
+    position: absolute;
+    height: 550px;
+    width: 620px;
+    background-color: rgb(255, 255, 255);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 230px;
+    margin-top: 350px;
+    border-radius: 40px;
+    opacity: 0.83;
+    z-index: 10;
+}
+
+.pmTimer__timer{
+    font-size: 16px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.timer__controls{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 220px;
+}

@@ -28,4 +28,5 @@
 .header__btn:hover{
     background-color: #f87596;
     color: #fff;
+    cursor: pointer;
 }

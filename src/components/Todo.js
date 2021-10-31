@@ -45,7 +45,7 @@ function Todo(props) {
     return (
         <div className = "todo">
             <div className = "todo__container">
-                <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "250px", position : "relative"}}/>
+                <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "250px", position : "relative", cursor:"pointer"}}/>
                 <div className = "todo__heading">
                     <button onMouseEnter = {() => {setcolor2(false)}} onMouseLeave ={() => {setcolor2(true)}} className = "sidebar__button"><BsCheck2Square size={33} color= {color2 ? "#354477" : "#fff"}/></button>
                     <p>To-Do List</p>
@@ -53,7 +53,7 @@ function Todo(props) {
                 <div>
                     <form onSubmit={handleSubmit} className = "todo__form">
                         <input value={task} type="text" placeholder="Task" onChange={(event) => setTask(event.target.value)}></input>
-                        <input value={deadline} type="text" placeholder="Deadline(dd/mm/yy)" onChange={(event) => setDeadline(event.target.value)}></input>
+                        <input value={deadline} type="date" placeholder="Deadline" onChange={(event) => setDeadline(event.target.value)} style={{color : "#354477", fontFamily: 'Montserrat', paddingRight : "15px"}}></input>
                         <button className="todo__add" type = "submit">+</button>
                     </form>
                 </div>

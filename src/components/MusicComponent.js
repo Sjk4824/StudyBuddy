@@ -15,7 +15,7 @@ function MusicComponent(props) {
         <div className = "music__component">
             <div className = "music__component__container">
 
-                <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "250px", position : "relative"}}/>
+                <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "250px", position : "relative", cursor:"pointer"}}/>
                 <div className = "music__component__heading">
                 <button onMouseEnter = {() => {setcolor1(false)}} onMouseLeave ={() => {setcolor1(true)}} className = "sidebar__button"><HiOutlineMusicNote size={33} color= {color1 ? "#354477" : "#fff"}/></button>
                     <p>Music</p>

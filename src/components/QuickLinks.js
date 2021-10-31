@@ -60,7 +60,7 @@ function QuickLinks(props) {
     return (
         <div className = "quicklink">
             <div className = "quicklink__container">
-                <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "250px", position : "relative"}}/>
+                <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "250px", position : "relative", cursor:"pointer"}}/>
                 <div className = "quicklink__heading">
                     <button onMouseEnter = {() => {setcolor3(false)}} onMouseLeave ={() => {setcolor3(true)}} className = "sidebar__button"><FiLink size={33} color= {color3 ? "#354477" : "#fff"}/></button>
                     <p>Quick Links</p>

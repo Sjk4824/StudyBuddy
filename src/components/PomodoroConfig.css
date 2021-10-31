@@ -12,7 +12,7 @@
     justify-content: space-around;
     align-items: center;
     height: 480px;
-    width: 800px;
+    width: 630px;
     background-color: white;
     opacity: 0.90;
     border-radius: 40px;
@@ -34,14 +34,14 @@
 .pomoContainer > h1{
     font-family: 'Montserrat', sans-serif;
     color: #354477;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-top: 50px;
     margin-bottom: 55px;    
 }
 .time{
     width: 100%;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 60px;
+    padding-right: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,7 +51,7 @@
 .time > p{
     font-family: 'Montserrat', sans-serif;
     color: #354477;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .input1{
@@ -68,7 +68,7 @@
 }
 .pomo__start{
     margin-top: 40px;
-    height: 70px;
+    height: 55px;
     width: 230px;
     margin-bottom: 50px;
     border-radius: 30px;
