@@ -8,9 +8,7 @@ import {MdSettings} from "react-icons/md";
 import SettingContext from './SettingContext';
 
 function PomodoroTimer(props) {
-
-    const red = "#f54e4e"; 
-    const green="#48ec8c"; 
+    
     const settingsInfo = useContext(SettingContext); 
     const [isPaused, setIsPaused] = useState(true); 
     const [mode, setMode] = useState("work"); //work / break
