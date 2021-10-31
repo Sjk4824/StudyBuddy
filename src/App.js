@@ -28,7 +28,7 @@ function App() {
           <Route path = "/dashboard">
             <Header openPopUp = {openPopUp}/>
             <SettingContext.Provider value ={{workMinutes, breakMinutes, workHours, breakHours, setWorkMinutes, setBreakMinutes, setWorkHours, setBreakHours}}>
-              {popUp ?<PomodoroConfig openPopUp = {openPopUp}/> : <Home openSettings = {openPopUp}/>}
+              <Home />
             </SettingContext.Provider>
           </Route>
           

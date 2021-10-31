@@ -6,10 +6,6 @@ function PomodoroConfig(props) {
 
     const settingsInfo = useContext(SettingContext); 
 
-    const handleStart = () => {
-        props.openPopUp();
-    }
-
     return (
         <div className = "pomoConfig">
             <div className="pomoContainer">
@@ -30,7 +26,7 @@ function PomodoroConfig(props) {
                         <input className ="pomoInput input2" type="number" value = {settingsInfo.breakMinutes} placeholder="minutes" onChange={(newValue) => settingsInfo.setBreakMinutes(newValue.target.value)}></input>
                     </form>
                 </div>
-                <button onClick={handleStart} className="pomo__start">Start Pomodoro Session</button>
+                <button onClick={() => props.setShowSettings(false)} className="pomo__start">Start Pomodoro Session</button>
             </div>
         </div>
     )

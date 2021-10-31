@@ -28,8 +28,12 @@ function Sidebar(props) {
         props.setLink(true);
     }
 
-    const handleClickCalculator=()=>{
-        props.removeSidebar(false); 
+    const handleClickClock=()=>{
+        //no need to remove sidebar
+        // props.removeSidebar(false); 
+        //we need to open the settingsPage. 
+        props.setHome(false); 
+        props.setShowSettings(true); 
     }
 
     return (
@@ -38,7 +42,7 @@ function Sidebar(props) {
                 <button onClick={handleClickMusic} onMouseEnter = {() => {setcolor1(false)}} onMouseLeave ={() => {setcolor1(true)}} className = "sidebar__button"><HiOutlineMusicNote size={30} color= {color1 ? "#354477" : "#fff"}/></button>
                 <button onClick={handleClickToDo} onMouseEnter = {() => {setcolor2(false)}} onMouseLeave ={() => {setcolor2(true)}} className = "sidebar__button"><BsCheck2Square size={30} color= {color2 ? "#354477" : "#fff"}/></button>
                 <button onClick={handleClickLinks} onMouseEnter = {() => {setcolor3(false)}} onMouseLeave ={() => {setcolor3(true)}} className = "sidebar__button"><FiLink size={30} color= {color3 ? "#354477" : "#fff"}/></button>
-                <button onClick={handleClickCalculator} onMouseEnter = {() => {setcolor4(false)}} onMouseLeave ={() => {setcolor4(true)}} className = "sidebar__button"><AiOutlineClockCircle size={30} color= {color4 ? "#354477" : "#fff"}/></button>
+                <button onClick={handleClickClock} onMouseEnter = {() => {setcolor4(false)}} onMouseLeave ={() => {setcolor4(true)}} className = "sidebar__button"><AiOutlineClockCircle size={30} color= {color4 ? "#354477" : "#fff"}/></button>
             </div>
         </div>
     )

@@ -6,6 +6,7 @@ import {BsPauseFill} from "react-icons/bs";
 import {BsFillPlayFill} from "react-icons/bs"; 
 import {MdSettings} from "react-icons/md"; 
 import SettingContext from './SettingContext';
+import {AiOutlineClose} from "react-icons/ai";
 
 function PomodoroTimer(props) {
     
@@ -75,6 +76,7 @@ function PomodoroTimer(props) {
     return (
         <div className = "pm__timer">
             <div className = "pmTimer__container">
+                <AiOutlineClose onClick={() => props.setHome(true)} color="#354477" style={{position : "absolute", top : "40px", right: "50px"}}/>
                 <div className = "pmTimer__timer">
                     <CircularProgressbar value={percentage} text={hours + ":" + minutes + ":" + seconds} styles={buildStyles({
                         textColor : "#354477",
@@ -87,7 +89,7 @@ function PomodoroTimer(props) {
                     {isPaused ? <BsFillPlayFill onClick={() => {setIsPaused(false); isPausedRef.current = false;}} color="#354477" size={55} style={{cursor : "pointer"}}/> :  <BsPauseFill onClick={() => {setIsPaused(true); isPausedRef.current = true;}} color="#354477" size={55} style={{cursor : "pointer"}}/>}
                     {/* <BsPauseFill color="#354477" size={55} style={{cursor : "pointer"}}/>
                     <BsFillPlayFill color="#354477" size={55} style={{cursor : "pointer"}}/> */}
-                    <MdSettings color="#354477" size={41} style={{cursor : "pointer"}} onClick = {() => props.openSettings()}/>
+                    <MdSettings color="#354477" size={41} style={{cursor : "pointer"}} onClick = {() => props.setShowSettings(true)}/>
                 </div>
             </div>
         </div>

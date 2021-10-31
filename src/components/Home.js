@@ -6,6 +6,7 @@ import MusicComponent from "./MusicComponent";
 import Todo from "./Todo"; 
 import QuickLinks from './QuickLinks';
 import PomodoroTimer from "./PomodoroTimer"; 
+import PomodoroConfig from './PomodoroConfig';
 var _ = require('lodash');
 
 function Home(props) {
@@ -38,20 +39,29 @@ function Home(props) {
     const [music, setMusic] = useState(false); 
     const [toDo, setToDo] = useState(false); 
     const [link, setLink] = useState(false); 
+    // const [clock, setClock] = useState(false); 
 
     const [showSettings, setShowSettings] = useState(false); 
-
+    const [home, setHome] = useState(true); 
 
     return (
         <div className = "home">
+            {/* home ? "home compoenent" : settings ? settings : clock */}
+            {home ? 
+                <div className = "home__greetings">
+                    <p className = "home__greetings__time">{time.getHours()}:{time.getMinutes() < 10 ? '0'+time.getMinutes() : time.getMinutes()}</p>
+                    <p className ="home__greetings__date">{day_of_week[time.getDay()]}, {time.getDate()} {month_names[time.getMonth()]}</p>
+                    <p className = "home__greetings__greet">{getGreeting()}, <strong>{_.startCase(_.toLower(JSON.parse(localStorage.getItem("user")).name))}!</strong></p>
+                </div> : showSettings ? <PomodoroConfig setShowSettings = {setShowSettings}/> : <PomodoroTimer setHome={setHome}  setShowSettings = {setShowSettings}/> }
+
             {/* <div className = "home__greetings">
                 <p className = "home__greetings__time">{time.getHours()}:{time.getMinutes() < 10 ? '0'+time.getMinutes() : time.getMinutes()}</p>
                 <p className ="home__greetings__date">{day_of_week[time.getDay()]}, {time.getDate()} {month_names[time.getMonth()]}</p>
                 <p className = "home__greetings__greet">{getGreeting()}, <strong>{_.startCase(_.toLower(JSON.parse(localStorage.getItem("user")).name))}!</strong></p>
             </div> */}
-            <PomodoroTimer openSettings = {props.openSettings}/>
+            {/* <PomodoroTimer openSettings = {props.openSettings}/> */}
             
-            {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo} setLink={setLink} />: ""}
+            {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo} setLink={setLink} setHome = {setHome} setShowSettings = {setShowSettings}/>: ""}
             
             {music &&  <MusicComponent removeSidebar={setDisplay} setMusic={setMusic}/>}
             {toDo && <Todo removeSidebar={setDisplay} setToDo={setToDo}/>}

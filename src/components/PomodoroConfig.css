@@ -1,24 +1,28 @@
 .pomoConfig{
     position: relative;
     display: flex;
-    justify-content: center;
-    padding-top: 100px;
+    /* justify-content: center; */
+    /* padding-top: 100px; */
 }
 
 .pomoContainer{
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
+    margin-top: 340px;
     justify-content: space-around;
     align-items: center;
     height: 480px;
     width: 630px;
     background-color: white;
-    opacity: 0.90;
+    opacity: 0.80;
     border-radius: 40px;
+    z-index: 15;
 }
 
-.pomoConfig::before{
+/* .pomoConfig::before{
     content: "";
     background-image: url("https://i.redd.it/0n1vny53phl11.jpg");
     height: 700px;
@@ -29,7 +33,7 @@
     left:0; 
     right:0; 
     bottom:0;
-}
+} */
 
 .pomoContainer > h1{
     font-family: 'Montserrat', sans-serif;
