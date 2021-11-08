@@ -3,7 +3,6 @@ const app = express();
 const routeUrls = require("./Routes/routes"); 
 const cors = require("cors"); 
 
-
 //middlewares
 app.use(express.json()); 
 app.use(cors()); 

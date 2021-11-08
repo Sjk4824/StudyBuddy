@@ -2,8 +2,7 @@ import React, {useState} from 'react'
 import "./Sidebar.css"; 
 import {HiOutlineMusicNote} from "react-icons/hi"; 
 import {BsCheck2Square} from "react-icons/bs"; 
-import {FiLink} from "react-icons/fi"; 
-import {AiOutlineCalculator} from "react-icons/ai";  
+import {FiLink} from "react-icons/fi";   
 import {AiOutlineClockCircle} from "react-icons/ai"; 
 
 function Sidebar(props) {

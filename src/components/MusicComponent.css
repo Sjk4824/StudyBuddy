@@ -85,3 +85,19 @@
     color: #354477;
     font-weight: 200;
 }
+
+.musicSearch__form > select{
+    position: relative;
+    /* right: 20px; */
+    margin-bottom: 15px;
+    width: 250px;
+    border: 1px solid #354477;
+    background-color: transparent;
+    border-radius: 30px;
+    height: 40px;
+    padding-left: 30px;
+}
+
+.option{
+    background-color: indianred;
+}
