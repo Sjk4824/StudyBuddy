@@ -3,10 +3,6 @@ import "./MusicComponent.css";
 import {AiOutlineClose} from "react-icons/ai"; 
 import {HiOutlineMusicNote} from "react-icons/hi"; 
 import Dropdown from "./Dropdown"; 
-import axios from "axios"; 
-import querystring from "querystring"; 
-import cookieParser from "cookie-parser"; 
-
 
 function MusicComponent(props) {
 
@@ -21,8 +17,8 @@ function MusicComponent(props) {
     
     const data = [1, 2, 3, 4]; 
 
-    var client_id = '5fa27e4a3af942029fb0ba0e62443013'; // Your client id
-    var client_secret = 'd22749d9094a4b46b858682f342476d5'; // Your secret
+    var client_id =process.env.REACT_APP_CLIENT_ID; // Your client id
+    var client_secret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
     var redirect_uri = 'http://localhost:3000/dashboard'; // Your redirect uri
     const AUTHORIZE = "https://accounts.spotify.com/authorize"; 
     const TOKEN  = "https://accounts.spotify.com/api/token"; 
@@ -40,7 +36,6 @@ function MusicComponent(props) {
     }
 
     function handlePageLoad(){
-        console.log("refreshing!");
         if(window.location.search.length > 0){
             handleRedirect(); 
         }
