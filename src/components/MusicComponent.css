@@ -1,0 +1,103 @@
+.music__component{
+    position: relative;
+    /* top: 120px;  */
+    display: inline;
+}
+.music__component__container{
+    position: relative;
+    z-index: 99;
+    min-width: 80px;
+    min-height: 470px;
+    width: 400px;
+    height: 710px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 100px 100px 0px;
+    padding-top: 25px;
+    align-items: flex-start;
+    padding-left: 40px;
+}
+
+.music__component__container::before{
+    content: "";
+    background-color: white;
+    opacity: 0.70;
+    position: absolute;
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0;
+    border-radius: 0px 100px 100px 0px;
+}
+
+.music__component__heading{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-size: 2.25rem;
+}
+.musicSearch__form{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.musicSearch__form > input{
+    position: relative;
+    /* right: 20px; */
+    margin-bottom: 15px;
+    width: 250px;
+    border: 1px solid #354477;
+    background-color: transparent;
+    border-radius: 30px;
+    height: 40px;
+    padding-left: 30px;
+}
+.album__picture{
+    
+    position: relative;
+    margin-top: 30px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    height: 200px; 
+    width: 200px;
+    background-color: #DB9191;
+}
+
+.music__info__p1{
+    position: relative;
+    font-size: 1.25rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-weight: 400;
+}
+::placeholder{
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+}
+.music__info__p2{
+    position: relative;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #354477;
+    font-weight: 200;
+}
+
+.musicSearch__form > select{
+    position: relative;
+    /* right: 20px; */
+    margin-bottom: 15px;
+    width: 250px;
+    border: 1px solid #354477;
+    background-color: transparent;
+    border-radius: 30px;
+    height: 40px;
+    padding-left: 30px;
+}
+
+.option{
+    background-color: indianred;
+}
