@@ -105,5 +105,31 @@
 .music__component__results{
     overflow: auto;
     height: 400px;
-    position: relative;
+    /* position: relative; */
+}
+::-webkit-scrollbar{
+    width: 3px;
+    height: 20px;
+}
+::-webkit-scrollbar-track{
+   background: rgb(156, 156, 156); 
+}
+::-webkit-scrollbar-thumb{
+    background:  rgb(180, 18, 167);
+    border-radius: 100vw;
+}
+.spotify__login__btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: none;
+    height: 45px; 
+    width: 180px;
+    background-color: #1DB954;
+    margin-top: 10px;
+}
+.spotify__login__btn:hover{
+    background-color: #17813c;
+    cursor: pointer;
 }

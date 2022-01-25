@@ -25,7 +25,6 @@ function Login() {
         <div className = "login">
             <h2 className = "login__logo">StudyBuddy</h2>
             <p className = "login__tagline">Study Less, Study Smart</p>
-            {/* <button className="login__button"><FcGoogle size={23}/>   Sign in with google</button> */}
             <GoogleLogin
                 clientId = "881799435990-umvhtu7g8k278l456alvoad8mo3v6qtj.apps.googleusercontent.com"
                 render={renderProps => (
@@ -43,6 +42,3 @@ function Login() {
 }
 
 export default Login
-
-// Clinet ID - 881799435990-umvhtu7g8k278l456alvoad8mo3v6qtj.apps.googleusercontent.com
-// Client secret - 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

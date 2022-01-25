@@ -2,18 +2,15 @@ import React, {useState, useEffect} from 'react';
 import "./MusicComponent.css"; 
 import TrackSearchResult from "./TrackSearchResult"; 
 import {AiOutlineClose} from "react-icons/ai"; 
-import {HiOutlineMusicNote} from "react-icons/hi"; 
-import useAuth from "./useAuth";   
+import {HiOutlineMusicNote} from "react-icons/hi";  
 import SpotifyWebApi from "spotify-web-api-node"; 
+import {BsSpotify} from "react-icons/bs"; 
 
 const spotifyWebApi = new SpotifyWebApi ({
     clientId: "5fa27e4a3af942029fb0ba0e62443013"
 }); 
 
 function MusicComponent(props) {
-
-    // const code = new URLSearchParams(window.location.search).get("code"); 
-    // const accessToken = useAuth(props.code); 
     
     const accessToken = props.at; 
     
@@ -98,7 +95,7 @@ function MusicComponent(props) {
                         </div>
                     </div>
                 
-                :<button style={{zIndex: "10"}} ><a href={AUTH_URL}>Login with spotify</a></button>}
+                :<button className="spotify__login__btn" style={{zIndex: "10"}} ><BsSpotify size={18} style={{marginRight : "5px", color:"white"}}/><a style={{color : "white", fontFamily : "Montserrat", textDecoration : "none"}} href={AUTH_URL}>Login with spotify</a></button>}
                 
             </div>
         </div>

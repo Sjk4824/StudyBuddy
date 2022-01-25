@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import "./Home.css"; 
 import "./Sidebar"; 
 import Sidebar from './Sidebar';
@@ -8,7 +8,6 @@ import QuickLinks from './QuickLinks';
 import PomodoroTimer from "./PomodoroTimer"; 
 import HomeTime from "./HomeTime";
 import PomodoroConfig from './PomodoroConfig';
-var _ = require('lodash');
 
 function Home(props) {
 

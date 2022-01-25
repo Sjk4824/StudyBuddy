@@ -5,7 +5,6 @@ const routeUrls = require("./Routes/routes");
 const SpotifyWebApi = require("spotify-web-api-node");
 
 const app = express();
-//middlewares
 app.use(express.json()); 
 app.use(cors()); 
 app.use("/app", routeUrls); 
