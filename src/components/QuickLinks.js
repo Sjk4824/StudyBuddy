@@ -56,9 +56,7 @@ function QuickLinks(props) {
         updated.splice(index, 1);
         setLinks(updated);
     }
-    
-    console.log("Am i running multiple times?"); 
-    
+
     return (
         <div className = "quicklink">
             <div className = "quicklink__container">
