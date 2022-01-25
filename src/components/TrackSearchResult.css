@@ -1,0 +1,8 @@
+.trackSearchResult{
+    margin-top: 10px;
+    position: relative;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    width: 270px;
+    flex-direction: column;
+}

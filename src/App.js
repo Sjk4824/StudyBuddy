@@ -20,6 +20,7 @@ function App() {
     setPopUp(!popUp); 
   }
 
+
   return (
     <Router>
       <div className="App">
@@ -28,7 +29,7 @@ function App() {
           <Route path = "/dashboard">
             <Header openPopUp = {openPopUp}/>
             <SettingContext.Provider value ={{workMinutes, breakMinutes, workHours, breakHours, setWorkMinutes, setBreakMinutes, setWorkHours, setBreakHours}}>
-              <Home />
+              <Home/>
             </SettingContext.Provider>
           </Route>
           

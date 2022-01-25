@@ -1,138 +1,98 @@
-import React, {useState} from 'react'; 
+import React, {useState, useEffect} from 'react'; 
 import "./MusicComponent.css"; 
+import TrackSearchResult from "./TrackSearchResult"; 
 import {AiOutlineClose} from "react-icons/ai"; 
 import {HiOutlineMusicNote} from "react-icons/hi"; 
-import Dropdown from "./Dropdown"; 
+import useAuth from "./useAuth";   
+import SpotifyWebApi from "spotify-web-api-node"; 
+
+const spotifyWebApi = new SpotifyWebApi ({
+    clientId: "5fa27e4a3af942029fb0ba0e62443013"
+}); 
 
 function MusicComponent(props) {
 
-    const [color1, setcolor1] = useState(true)
+    const code = new URLSearchParams(window.location.search).get("code"); 
+    // const accessToken = useAuth(props.code); 
+    
+    const [search, setSearch] = useState(""); 
+    const [searchResults, setSearchResults] = useState([]); 
 
-    let item = ["Music 1", "Music 2", "Music 3", "Music 4", "Music 5"]; 
+
+    const [color1, setcolor1] = useState(true)
 
     const handleClick = () =>{
         props.removeSidebar(true); 
         props.setMusic(false); 
     }
-    
-    const data = [1, 2, 3, 4]; 
+
+   
 
     var client_id =process.env.REACT_APP_CLIENT_ID; // Your client id
-    var client_secret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
     var redirect_uri = 'http://localhost:3000/dashboard'; // Your redirect uri
-    const AUTHORIZE = "https://accounts.spotify.com/authorize"; 
-    const TOKEN  = "https://accounts.spotify.com/api/token"; 
+    const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=${redirect_uri}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`; 
 
-    const loginSpotify = () => {
-        var scope = 'user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private';
-        
-        let url = AUTHORIZE; 
-        url += "?client_id="+client_id; 
-        url += "&response_type=code"; 
-        url += "&redirect_uri="+ encodeURI(redirect_uri); 
-        url += "&show_dialog=true"; 
-        url += "&"+scope; 
-        window.location.href = url;
-    }
+    // useEffect(() => {
+    //     if(!accessToken){
+    //         return; 
+    //     }
+    //     spotifyWebApi.setAccessToken(accessToken); 
+    // }, [accessToken]); 
 
-    function handlePageLoad(){
-        if(window.location.search.length > 0){
-            handleRedirect(); 
-        }
-    }
+    // useEffect(() => {
+    //     if(!search){
+    //         return setSearchResults([]); 
+    //     }
+    //     if(!accessToken){
+    //         return; 
+    //     }
+    //     let cancel = false; 
+    //     spotifyWebApi.searchTracks(search).then((res) => {
+    //         if(cancel){
+    //             return; 
+    //         }
+    //         setSearchResults(res.body.tracks.items.map(track => {
 
-    function handleRedirect(){
-        let code = getCode();
-        fetchAccessToken(code); 
-        window.history.pushState("", "", redirect_uri);
-    }
+    //             const smallestAlbumImage = track.album.images.reduce((smallest, image) => {
+    //                 if(image.height < smallest.height){
+    //                     return image
+    //                 }
+    //                 else{
+    //                     return smallest
+    //                 }
+    //             }, track.album.images[0]);
 
-    function fetchAccessToken(code){
-        let body = "grant_type=authorization_code"; 
-        body += "&code=" + code; 
-        body += "&redirect_uri="+encodeURI(redirect_uri); 
-        body += "&client_id="+client_id; 
-        body+= "&client_secret"+client_secret; 
-        callAuthorizationApi(body); 
-    }
+    //             return {
+    //                 artist : track.artists[0].name, 
+    //                 title: track.name, 
+    //                 uri: track.uri, 
+    //                 albumUrl: smallestAlbumImage.url
+    //             }
+    //         }))
+    //     })
+    //     return () => (cancel = true)
+    // }, [search, accessToken])
 
-    function callAuthorizationApi(body){
-        let xhr = new XMLHttpRequest(); 
-        xhr.open("POST", TOKEN, true); 
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.setRequestHeader('Authorization', 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')))
-        xhr.send(body); 
-        xhr.onload = handleAuthorizationResponse; 
-    }
-
-    function handleAuthorizationResponse(){
-        if(this.status === 200){
-            var data = JSON.parse(this.responseText); 
-            console.log(data); 
-            if(data.access_token != undefined){
-                var access_token = data.access_token;
-                localStorage.setItem("access_token", access_token); 
-            }
-            if(data.refresh_token != undefined){
-                var refresh_token = data.refresh_token; 
-                localStorage.setItem("refresh_token", refresh_token); 
-            }
-            handlePageLoad(); 
-        }
-        else{
-            console.log(this.responseText); 
-            alert(this.responseText); 
-        }
-    }
-
-    function getCode(){
-        let code = null; 
-        const queryString = window.location.search; 
-        if(queryString.length > 0){
-            const urlParams = new URLSearchParams(queryString); 
-            code = urlParams.get("code")
-        }
-
-        return code; 
-    }
-    
     return (
         <div className = "music__component">
-            <div onLoad={handlePageLoad()} className = "music__component__container">
+            <div className = "music__component__container">
 
                 <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "250px", position : "relative", cursor:"pointer"}}/>
                 <div className = "music__component__heading">
                 <button onMouseEnter = {() => {setcolor1(false)}} onMouseLeave ={() => {setcolor1(true)}} className = "sidebar__button"><HiOutlineMusicNote size={33} color= {color1 ? "#354477" : "#fff"}/></button>
                     <p>Music</p>
                 </div>
-
-                <button style={{zIndex : 10}} onClick = {loginSpotify}>Log in with Spotify</button>
-
-
-                <form style={{zIndex : 10}} onSubmit={() => {}}>
-                    <Dropdown options = {data}/>
-                    <Dropdown options = {data}/>
-                    <button type="submit">Search</button>
-                </form>
-
-
-
-
-
-
-                {/* <div>
-                    <form className = "musicSearch__form">
-                        <input placeholder="Search genre"></input>
-                        <input placeholder="Search song"></input>
-                    </form>
-                </div>
-                <div className = "music__component__info">
-                    <div className = "album__picture">
-
+                {code ?
+                    <div>
+                        <div>
+                            <form className = "musicSearch__form">
+                                <input type="search" placeholder="Search song" value = {search} onChange = {e => setSearch(e.target.value)}></input>
+                            </form>
+                        </div>
                     </div>
-                    <p className="music__info__p1">Name of the song</p>
-                    <p className="music__info__p2">Artish Name</p>
-                </div> */}
+                
+                :<button style={{zIndex: "10"}} ><a href={AUTH_URL}>Login with spotify</a></button>}
+                
             </div>
         </div>
     )

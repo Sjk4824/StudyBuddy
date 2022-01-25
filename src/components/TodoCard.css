@@ -5,7 +5,6 @@
     padding-right: 20px;
     width: 270px;
     flex-direction: column;
-    /* border-bottom: 1px solid rgb(185, 185, 185); */
 }
 .todoCard__header{
     font-family: 'Montserrat', sans-serif;
