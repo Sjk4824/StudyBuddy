@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from "./components/Login"; 
 import PomodoroConfig from "./components/PomodoroConfig"; 
 import SettingContext from "./components/SettingContext";
+import useAuth from "./components/useAuth";
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
     setPopUp(!popUp); 
   }
 
+  const code = new URLSearchParams(window.location.search).get("code"); 
+  const accessToken = useAuth(code); 
 
   return (
     <Router>
@@ -29,7 +32,7 @@ function App() {
           <Route path = "/dashboard">
             <Header openPopUp = {openPopUp}/>
             <SettingContext.Provider value ={{workMinutes, breakMinutes, workHours, breakHours, setWorkMinutes, setBreakMinutes, setWorkHours, setBreakHours}}>
-              <Home/>
+              <Home code = {code} at = {accessToken}/>
             </SettingContext.Provider>
           </Route>
           

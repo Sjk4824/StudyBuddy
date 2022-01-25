@@ -4,5 +4,17 @@
     padding-bottom: 10px;
     padding-right: 20px;
     width: 270px;
-    flex-direction: column;
+    display: flex;
+}
+
+.track__description{
+    padding-left: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+.track__description__song{
+    font-size: 15px;
+}
+.track__description__artist{
+    font-size: 12px;
+    font-weight: 300;
 }

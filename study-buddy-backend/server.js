@@ -24,8 +24,8 @@ app.post("/refresh", (req, res) => {
       .refreshAccessToken()
       .then(data => {
         res.json({
-          accessToken: data.body.accessToken,
-          expiresIn: data.body.expiresIn,
+          accessToken: data.body.access_token,
+          expiresIn: data.body.expires_in,
         })
       })
       .catch(err => {
@@ -41,7 +41,6 @@ app.post("/login", (req, res) => {
       clientSecret: "d22749d9094a4b46b858682f342476d5"
     });
     const code = req.body.code;
-    console.log(code);
     spotifyApi.authorizationCodeGrant(code).then((data) => {
         res.json({
           accessToken: data.body.access_token,
@@ -50,7 +49,6 @@ app.post("/login", (req, res) => {
         })
       })
       .catch(err => {
-        console.log("I am here");
         res.sendStatus(400)
     })
 })

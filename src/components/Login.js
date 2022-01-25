@@ -9,7 +9,6 @@ function Login() {
     //on  button click, we need to authenticate user with google OAuth. 
     let history = useHistory();
     const handleSuccess = (response) =>{
-        console.log(response.profileObj);
         let userInfo = {
             "name" : response.profileObj.givenName, 
             "userId" : response.profileObj.googleId

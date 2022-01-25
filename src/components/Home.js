@@ -10,7 +10,7 @@ import HomeTime from "./HomeTime";
 import PomodoroConfig from './PomodoroConfig';
 var _ = require('lodash');
 
-function Home() {
+function Home(props) {
 
     
     const [display, setDisplay] = useState(true); 
@@ -25,7 +25,7 @@ function Home() {
         <div className = "home">
             {home ? <HomeTime />: showSettings ? <PomodoroConfig setShowSettings = {setShowSettings}/> : <PomodoroTimer setHome={setHome}  setShowSettings = {setShowSettings}/> }
             {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo} setLink={setLink} setHome = {setHome} setShowSettings = {setShowSettings}/>: ""}
-            {music &&  <MusicComponent removeSidebar={setDisplay} setMusic={setMusic}/>}
+            {music &&  <MusicComponent at={props.at} code={props.code} removeSidebar={setDisplay} setMusic={setMusic}/>}
             {toDo && <Todo removeSidebar={setDisplay} setToDo={setToDo}/>}
             {link && <QuickLinks removeSidebar={setDisplay} setLink={setLink}/> }
         </div>

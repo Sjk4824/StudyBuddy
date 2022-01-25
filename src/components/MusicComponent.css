@@ -101,3 +101,9 @@
 .option{
     background-color: indianred;
 }
+
+.music__component__results{
+    overflow: auto;
+    height: 400px;
+    position: relative;
+}
