@@ -17,7 +17,7 @@ app.use(require("./Routes/loginUser"));
 
 //connect to the mongoDB atlas database. 
 //remeber to hide the password of the database. 
-mongoose.connect("mongodb+srv://Sjk4824:test@studybuddy.nv6oi.mongodb.net/userData?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGODBURL, {
   useNewUrlParser : true,
 }); 
 
