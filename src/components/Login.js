@@ -4,15 +4,24 @@ import studyImage from "./studyingsvg(1).svg";
 import {FcGoogle} from "react-icons/fc"; 
 import GoogleLogin from "react-google-login"; 
 import {useHistory} from "react-router-dom"; 
+const axios = require("axios"); 
 
 function Login() {
     //on  button click, we need to authenticate user with google OAuth. 
     let history = useHistory();
+
     const handleSuccess = (response) =>{
+        console.log(response.profileObj);
         let userInfo = {
             "name" : response.profileObj.givenName, 
             "userId" : response.profileObj.googleId
         }
+        axios.get("http://localhost:4000/loginuser", {
+            params : {
+                mailID : response.profileObj.email, 
+                googleID : response.profileObj.googleId
+            }
+        })
         localStorage.setItem("user", JSON.stringify(userInfo)); 
         history.push("/dashboard");
     }
