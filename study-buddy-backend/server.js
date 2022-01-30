@@ -13,7 +13,7 @@ app.use(cors());
 //Routes to be used by the app
 app.use("/app", routeUrls); 
 app.use(require("./Routes/loginUser")); 
-
+app.use(require("./Routes/quickLink")); 
 
 //connect to the mongoDB atlas database. 
 //remeber to hide the password of the database. 
@@ -65,13 +65,11 @@ app.post("/login", (req, res) => {
 })
 
 const item1 = new QuickLink({
-  mailID : "sad@gmail.com", 
   googleID : 12345, 
-  quickLink : [{resourceName : "insta" , url : "https://www.instagram.com"}, {resourceName : "youtube" , url : "https://www.youtube.com"}]
-}); 
+  quickLink : [{resourceName : "insta" , url : "https://www.instagram.com", imgUrl : "https://www.instagram.com"}, {resourceName : "youtube" , url : "https://www.youtube.com", imgUrl : "https://www.instagram.com"}]
+});
 
 const item2 = new QuickLink({
-  mailID : "sewqweqwe@gmail.com", 
   googleID : 78910, 
   quickLink : [{resourceName : "iris" , url : "https://www.iris.com"}, {resourceName : "pintrest" , url : "https://www.pintrest.com"}]
 }); 

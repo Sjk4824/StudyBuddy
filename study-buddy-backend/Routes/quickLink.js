@@ -1,19 +1,47 @@
 const router = require("express").Router(); 
-//import the quick link schema from the document. 
 const mongoose = require("mongoose"); 
+const quickLink = require("../models/quickLink");
 const QuickLink = require("../models/quickLink");
 
-router.post("/add/quickLink", (req, res) => {
-    const mailID = req.body.mailID; 
-    const googleID = req.body.googleID; 
-    const quickLink = req.body.quickLink; 
+//get request to fetch all the todos from the database. 
+router.get("/getallqlinks", async (req, res) => {
+    const googleID = req.query.googleID; 
+    await QuickLink.findOne({googleID : googleID} , (err, foundItem) => {
 
-    //first search if user exists or not. 
-    QuickLink.findOne({googleID : googleID} , (err, foundItem) => {
-        //push the new quickLink to the array and save it 
-        foundItem.quickLink.push(quickLink); 
-        foundItem.save(); 
-    }); 
+        //we get an array of the user's quicklinks
+        const quickLink = foundItem.quickLink;
+        res.send(foundItem.quickLink); 
+    }).clone().catch((err) => {
+        console.log(err);
+    })
+}); 
+
+router.post("/addqlink", async (req, res) => {
+    const googleID = req.body.googleID;
+    await QuickLink.findOne({googleID : googleID} , (err, foundItem) => {
+
+        const newLink = {
+            resourceName : req.body.quickLink.resourceName, 
+            url : req.body.quickLink.url, 
+            imgUrl : req.body.quickLink.imgUrl
+        }
+
+        let newArray = foundItem.quickLink; 
+        newArray.push(newLink); 
+
+        const response = QuickLink.updateOne({googleID : googleID}, {quickLink : newArray}, (err) => {
+            if(err){
+                console.log("Operation was unsuccessful"); 
+            }
+        });
+
+        res.send(newLink); 
+    }).clone().catch((err) => {
+        console.log(err);
+    })
 })
+
+module.exports = router; 
+
 
 

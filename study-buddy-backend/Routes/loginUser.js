@@ -11,7 +11,6 @@ router.get("/loginuser", async (req, res) => {
                 //if such a user never existed wonly 
                 //make a user and set their quicklinks and todos to 0. 
                 const item = new QuickLink({
-                    mailID : req.query.mailID, 
                     googleID : req.query.googleID, 
                     quickLink : [], 
                 }); 

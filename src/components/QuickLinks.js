@@ -1,4 +1,4 @@
-import React, {useState} from 'react'; 
+import React, {useEffect, useState} from 'react'; 
 import "./QuickLinks.css"; 
 import {AiOutlineClose} from "react-icons/ai";
 import {FiLink} from "react-icons/fi";
@@ -9,13 +9,31 @@ function QuickLinks(props) {
 
     const [url, setUrl] = useState(""); 
     const [rName, setRName] = useState(""); 
-
     const [img, setImg] = useState(""); 
-
     const [color3, setcolor3] = useState(true)
+    const [links, setLinks] = useState([]); 
 
-    const [links, setLinks] = useState([
-    ]); 
+
+    //on rendering this componenet, we need to get all the todos associated with this user -> useffect. 
+    useEffect(() => {
+        const fetchQuickLinks = async () => {
+            const quickLinks = await axios.get("http://localhost:4000/getallqlinks", {
+                params : {
+                    googleID : JSON.parse(localStorage.getItem("user")).userId, 
+                    // googleID : 78910, 
+                }
+            }).then((response) => {
+                //here we need to set links as the response. 
+                setLinks(response.data); 
+                // console.log(response.data);
+
+            }).catch((err) => {
+                console.log(err); 
+            })
+        }
+        fetchQuickLinks(); 
+    }, []); 
+
 
     const handleClick = () =>{
         props.removeSidebar(true); 
@@ -25,24 +43,31 @@ function QuickLinks(props) {
     const handleSubmit = (event) => {
         event.preventDefault(); 
         if (!event) return;
-
         axios.get("http://localhost:4000/app/favicon", 
             {
                 params: {
-                    //the parameter for querying. 
                     url : url
                 }
             }
-        ).then((resp) => {
-            const newLink = {
-                linkName : rName, 
-                url : url, 
-                imgUrl : resp.data.icons[0].url
-            }
-            makeNewLink(newLink); 
-            setUrl(""); 
-            setRName(""); 
-            setImg(""); 
+        ).then(async (resp) => {
+            await axios.post("http://localhost:4000/addqlink", {
+                googleID : JSON.parse(localStorage.getItem("user")).userId, 
+                quickLink : {
+                    resourceName : rName, 
+                    url : url,
+                    imgUrl : resp.data.icons[0].url, 
+                }
+            }).then((response) => {
+                const newLink = {
+                    resourceName : response.data.resourceName, 
+                    url : response.data.url, 
+                    imgUrl : response.data.imgUrl
+                }
+                makeNewLink(newLink); 
+                setUrl(""); 
+                setRName(""); 
+                setImg(""); 
+            })
         })
     }
 
@@ -74,7 +99,7 @@ function QuickLinks(props) {
                 </div>
                 <div className = "quicklink__all">
                     {links.map((link, index) => (
-                        <QuickCard key={index} index={index} rName = {link.linkName} url={link.url} imgUrl = {link.imgUrl} removeLink={removeLink}/>
+                        <QuickCard key={index} index={index} rName = {link.resourceName} url={link.url} imgUrl = {link.imgUrl} removeLink={removeLink}/>
                     ))}
                 </div>
             </div>
