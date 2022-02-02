@@ -6,6 +6,7 @@ const SpotifyWebApi = require("spotify-web-api-node");
 const mongoose = require("mongoose");
 const app = express();
 const QuickLink = require("./models/quickLink");
+const Todo = require("./models/todo"); 
 
 app.use(express.json()); 
 app.use(cors()); 
@@ -14,7 +15,7 @@ app.use(cors());
 app.use("/app", routeUrls); 
 app.use(require("./Routes/loginUser")); 
 app.use(require("./Routes/quickLink")); 
-
+app.use(require("./Routes/todo")); 
 //connect to the mongoDB atlas database. 
 //remeber to hide the password of the database. 
 mongoose.connect(process.env.MONGODBURL, {
@@ -74,6 +75,10 @@ const item2 = new QuickLink({
   quickLink : [{resourceName : "iris" , url : "https://www.iris.com"}, {resourceName : "pintrest" , url : "https://www.pintrest.com"}]
 }); 
 
+const item11 = new Todo({
+  googleID : 1234567, 
+  todo : [{task : "Someshit ma"}, {task : "Someshit ma 2"}]
+});
 
 app.listen(4000, (req, res)=>{
     console.log("Server up and running on port 4000!");

@@ -76,10 +76,17 @@ function QuickLinks(props) {
         setLinks(newItem); 
     }
 
-    const removeLink = (index) => {
+    const removeLink = async (index) => {
         const updated = [...links];
         updated.splice(index, 1);
-        setLinks(updated);
+        //we will send this updated array to the backend and findOne and update the array
+        await axios.put("http://localhost:4000/deleteqlink", {
+            googleID : JSON.parse(localStorage.getItem("user")).userId,
+            updatedArray : updated, 
+        }).then((response) => {
+            setLinks(response.data); 
+        }); 
+        // setLinks(updated);
     }
 
     return (

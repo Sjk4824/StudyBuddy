@@ -23,7 +23,6 @@ function Login() {
         }
         axios.get("http://localhost:4000/loginuser", {
             params : {
-                mailID : response.profileObj.email, 
                 googleID : response.profileObj.googleId
             }
         })

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router(); 
 const axios = require("axios"); 
 const QuickLink = require("../models/quickLink");
+const Todo = require("../models/todo"); 
 
 router.get("/loginuser", async (req, res) => {
     
@@ -13,6 +14,19 @@ router.get("/loginuser", async (req, res) => {
                 const item = new QuickLink({
                     googleID : req.query.googleID, 
                     quickLink : [], 
+                }); 
+                item.save(); 
+            }
+        }).clone().catch((err) => {
+            console.log(err);
+        })
+
+        await Todo.findOne({googleID : req.query.googleID} , (err, foundItem) => {
+            //push the new quickLink to the array and save it 
+            if(!foundItem){
+                const item = new Todo({
+                    googleID : req.query.googleID, 
+                    todo : [], 
                 }); 
                 item.save(); 
             }

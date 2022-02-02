@@ -1,16 +1,17 @@
-import React, {useState} from 'react'; 
+import React, {useEffect, useState} from 'react'; 
 import "./Todo.css"; 
 import {AiOutlineClose} from "react-icons/ai";
 import {BsCheck2Square} from "react-icons/bs";
 import TodoCard from "./TodoCard"; 
+import axios from 'axios';
 
 function Todo(props) {
 
     const [task, setTask] = useState(""); 
     const [deadline, setDeadline] = useState(""); 
+    const [todos, setTodos] = useState([]); 
 
-    const [todos, setTodos] = useState([
-    ]); 
+
     const [color2, setcolor2] = useState(true);
 
     const handleClick = () =>{
@@ -18,17 +19,45 @@ function Todo(props) {
         props.setToDo(false); 
     }
 
-    const handleSubmit= (event) =>{
+    //On first render of the component, we always the below: 
+    useEffect(() => {
+        const fetchTodos = async () => {
+            const todos = await axios.get("http://localhost:4000/getalltodos", {
+                params : {
+                    googleID : JSON.parse(localStorage.getItem("user")).userId,
+                }
+            }).then((response) => {
+                setTodos(response.data); 
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+
+        fetchTodos(); 
+    }, []); 
+
+    const handleSubmit= async (event) =>{
         event.preventDefault(); 
         if (!event) return;
-        const newTodo = {
-            task : task, 
-            deadline : deadline,
-            isDone: false
-        }
-        makeNewList(newTodo); 
-        setTask(""); 
-        setDeadline(""); 
+
+        //send the information to the backend: 
+        await axios.post("http://localhost:4000/addtodo", {
+            googleID : JSON.parse(localStorage.getItem("user")).userId,
+            todo : {
+                task : task, 
+                deadline : deadline
+            }
+        }).then((response) => {
+            const newTodo = {
+                task : response.data.task, 
+                deadline : response.data.deadline,
+            }
+            makeNewList(newTodo); 
+            setTask(""); 
+            setDeadline(""); 
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     
     const makeNewList = (toadd) => {
@@ -36,10 +65,16 @@ function Todo(props) {
         setTodos(newItem); 
     }
 
-    const removeTodo = (index) => {
+    const removeTodo = async (index) => {
         const updated = [...todos];
         updated.splice(index, 1);
-        setTodos(updated);
+        //here we make a put request to modify the array: 
+        await axios.put("http://localhost:4000/deletetodo", {
+            googleID : JSON.parse(localStorage.getItem("user")).userId,
+            updatedArray : updated
+        }).then((response) => {
+            setTodos(response.data);
+        })
     }
 
     return (
