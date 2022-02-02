@@ -1,18 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Login.css"; 
 import studyImage from "./studyingsvg(1).svg"; 
 import {FcGoogle} from "react-icons/fc"; 
 import GoogleLogin from "react-google-login"; 
 import {useHistory} from "react-router-dom"; 
+const axios = require("axios"); 
 
 function Login() {
-    //on  button click, we need to authenticate user with google OAuth. 
+    //on  button click, we need to authenticate user with google OAuth.
+
+    //we need to clear the local storage everytime the login component is rendered : 
+    useEffect(() => {
+        localStorage.clear(); 
+    }, []); 
+
     let history = useHistory();
+
     const handleSuccess = (response) =>{
         let userInfo = {
             "name" : response.profileObj.givenName, 
             "userId" : response.profileObj.googleId
         }
+        axios.get("http://localhost:4000/loginuser", {
+            params : {
+                googleID : response.profileObj.googleId
+            }
+        })
         localStorage.setItem("user", JSON.stringify(userInfo)); 
         history.push("/dashboard");
     }
