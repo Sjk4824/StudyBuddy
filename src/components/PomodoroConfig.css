@@ -86,4 +86,5 @@
 .pomo__start:hover{
     background: #354477;
     color: #fff;
+    cursor: pointer;
 }

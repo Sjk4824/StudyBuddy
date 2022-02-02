@@ -22,7 +22,7 @@ function Home(props) {
 
     return (
         <div className = "home">
-            {home ? <HomeTime />: showSettings ? <PomodoroConfig setShowSettings = {setShowSettings}/> : <PomodoroTimer setHome={setHome}  setShowSettings = {setShowSettings}/> }
+            {home ? <HomeTime />: showSettings ? <PomodoroConfig setHome={setHome} setShowSettings = {setShowSettings}/> : <PomodoroTimer setHome={setHome}  setShowSettings = {setShowSettings}/> }
             {display? <Sidebar removeSidebar={setDisplay} setMusic={setMusic} setToDo={setToDo} setLink={setLink} setHome = {setHome} setShowSettings = {setShowSettings}/>: ""}
             {music &&  <MusicComponent at={props.at} code={props.code} removeSidebar={setDisplay} setMusic={setMusic}/>}
             {toDo && <Todo removeSidebar={setDisplay} setToDo={setToDo}/>}

@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect, useRef} from 'react'
 import "./PomodoroTimer.css"; 
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {BsPauseFill} from "react-icons/bs"; 
 import {BsFillPlayFill} from "react-icons/bs"; 
@@ -72,23 +73,28 @@ function PomodoroTimer(props) {
     if(seconds < 10){
         seconds = "0" + seconds; 
     }
+    if(hours < 10){
+        hours = "0" + hours; 
+    }
 
     return (
         <div className = "pm__timer">
             <div className = "pmTimer__container">
-                <AiOutlineClose onClick={() => props.setHome(true)} color="#354477" style={{position : "absolute", top : "40px", right: "50px"}}/>
+                <AiOutlineClose onClick={() => props.setHome(true)} color="#354477" style={{position : "absolute", top : "40px", right: "50px", cursor:"pointer"}}/>
                 <div className = "pmTimer__timer">
-                    <CircularProgressbar value={percentage} text={hours + ":" + minutes + ":" + seconds} styles={buildStyles({
+                    <CircularProgressbarWithChildren value={percentage} styles = {buildStyles({
                         textColor : "#354477",
                         pathColor : mode === "work" ? "rgba(216, 36, 129, 0.8)" : "#39A388", 
                         trailColor: "rgba(205, 203, 204, 0.8)", 
-                        textSize : "15px"
-                    })}/>
+                    })}>
+                        <div style={{display : "flex", flexDirection : "column", alignItems : "center"}}>
+                            <p style={{fontSize : "18px", color : "#354477"}}>{mode === "work" ? "Work Time!" : "Break Time!"}</p>
+                            <p style={{fontSize : "35px", color : "#354477"}}>{hours + ":" + minutes + ":" + seconds}</p>
+                        </div>
+                    </CircularProgressbarWithChildren>;
                 </div>
                 <div className="timer__controls">
                     {isPaused ? <BsFillPlayFill onClick={() => {setIsPaused(false); isPausedRef.current = false;}} color="#354477" size={55} style={{cursor : "pointer"}}/> :  <BsPauseFill onClick={() => {setIsPaused(true); isPausedRef.current = true;}} color="#354477" size={55} style={{cursor : "pointer"}}/>}
-                    {/* <BsPauseFill color="#354477" size={55} style={{cursor : "pointer"}}/>
-                    <BsFillPlayFill color="#354477" size={55} style={{cursor : "pointer"}}/> */}
                     <MdSettings color="#354477" size={41} style={{cursor : "pointer"}} onClick = {() => props.setShowSettings(true)}/>
                 </div>
             </div>

@@ -1,14 +1,21 @@
 import React, {useContext} from 'react'
 import "./PomodoroConfig.css"; 
 import SettingContext from './SettingContext';
+import {AiOutlineClose} from "react-icons/ai"; 
 
 function PomodoroConfig(props) {
 
     const settingsInfo = useContext(SettingContext); 
 
+    function handleClick(){
+        props.setShowSettings(false); 
+        props.setHome(true); 
+    }
+
     return (
         <div className = "pomoConfig">
             <div className="pomoContainer">
+                <AiOutlineClose onClick={handleClick} size={15} color="#354477" style={{marginLeft : "480px", marginTop: "30px" , position : "relative", cursor:"pointer"}}/>
                 <h1>Configure your session</h1>
                 <div className = "time work__time">
                     <p>Work Session</p>
